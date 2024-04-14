@@ -19,3 +19,5 @@ class Wizard extends Player {
 
 const wizrd1 = new Wizard("Rohit", "Attacker");
 const wizrd2 = new Wizard("Raj", "Poisner");
+
+console.log(wizrd1);
