@@ -35,12 +35,29 @@ class LinkedList {
     this.length++;
   }
 
-//   insert(index,value){
-//     const temp = this.head
-//     while(!temp.next){
+  insert(index, value) {
+    const newNode = new Node(value);
+    let i = 1;
+    let prev = this.head;
+    if (index === 0) {
+      newNode.next = prev;
+      this.head = newNode;
+      return;
+    }
+    let next = prev.next;
 
-//     }
-//   }
+    while (next.next) {
+      if (i == index) {
+        prev.next = newNode;
+        newNode.next = next;
+        this.length++;
+        return;
+      }
+      prev = next;
+      next = next.next;
+      i++;
+    }
+  }
 
   display() {
     let temp = this.head;
@@ -48,6 +65,20 @@ class LinkedList {
       console.log(temp.value);
       temp = temp.next;
     }
+    console.log(temp.value);
+  }
+
+  reverse() {
+    let first = this.head;
+    let second = first.next;
+    while (second) {
+      let temp = second.next;
+      second.next = first;
+      first = second;
+      second = temp;
+    }
+    this.head.next = null;
+    this.head = first;
   }
 }
 
@@ -56,6 +87,10 @@ myLinkedList.append(20);
 myLinkedList.append(30);
 myLinkedList.append(40);
 myLinkedList.prepend(5);
+myLinkedList.insert(2, 99);
 myLinkedList.display();
 
 console.log(myLinkedList);
+
+myLinkedList.reverse()
+myLinkedList.display()
